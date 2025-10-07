@@ -11,9 +11,9 @@ void reverse(char str[]) {
     }
 }
 
-int main(void) {
-    char str[] = "Hello World!";
-    reverse(str);
-    printf("%s\n", str);
-    return 0;
-}
+// int main(void) {
+//     char str[] = "Hello World!";
+//     reverse(str);
+//     printf("%s\n", str);
+//     return 0;
+// }
