@@ -1,6 +1,8 @@
+// gcc main.c -o ../build/objects/main.o
+
 #include <stdio.h>
 
-int main(void) {
-    printf("Hello, World!\n");
+int main() {
+    printf("Main Function");
     return 0;
 }

@@ -59,6 +59,12 @@ dkms.conf
 
 # CMake
 cmake-build-debug/**
+CMakeFiles/
+CMakeScripts/
+cmake-build-*/
+CMakeCache.txt
+cmake_install.cmake
+Makefile
 
 # IntelliJ Idea
 idea/
