@@ -5,7 +5,7 @@
 
 int main() {
     char str[] = "Hello World!11";
-    reverse(str);
+    reverseStringV2(str);
     printf("%s\n", str);
     return 0;
 }

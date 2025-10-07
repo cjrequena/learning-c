@@ -2,12 +2,34 @@
 #include <stdio.h>
 #include <string.h>
 
-void reverse(char str[]) {
-    int len = strlen(str);
+void reverseString(char str[]) {
+    const int len = strlen(str);
     for (int i = 0; i < len / 2; i++) {
-        char aux = str[i];
+        const char aux = str[i];
         str[i] = str[len - i - 1];
         str[len - i - 1] = aux;
+    }
+}
+
+void reverseStringV1(char* str) {
+    const int len = strlen(str);
+    for (int i = 0; i < len / 2; i++) {
+        const char aux = *(str + i);
+        *(str + i) = *(str + len - i -1);
+        *(str + len - i -1) = aux;
+    }
+}
+
+void reverseStringV2(char* str) {
+    char* start = str;
+    char* end = str + strlen(str) - 1;
+
+    while (start < end) {
+        const char temp = *start;
+        *start = *end;
+        *end = temp;
+        start++;
+        end--;
     }
 }
 
