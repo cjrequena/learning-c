@@ -13,14 +13,14 @@ learning-c/
 │   └── module2.h
 ├── lib/
 │   └── (third-party libraries)
-├── tests/
+├── test/
 │   ├── test_module1.c
 │   └── test_module2.c
 ├── build/
 │   └── (compiled objects and binaries)
-├── docs/
+├── doc/
 │   └── README.md
-├── scripts/
+├── script/
 │   ├── build.sh
 │   └── run_tests.sh
 ├── .gitignore
