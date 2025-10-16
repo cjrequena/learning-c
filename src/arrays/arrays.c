@@ -3,10 +3,9 @@
 //
 
 #include "arrays.h"
-
 #include <stdio.h>
 
-void printArrayAdresses(void) {
+void printArrayAddresses(void) {
     int array[] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
     int size = sizeof(array) / sizeof(int);
     for (int i = 0; i < size; i++) {
@@ -15,5 +14,5 @@ void printArrayAdresses(void) {
 }
 
 // int main(void) {
-//     printArrayAdresses();
+//     printArrayAddresses();
 // }

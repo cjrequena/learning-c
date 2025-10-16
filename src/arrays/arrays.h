@@ -5,6 +5,6 @@
 #ifndef LEARNING_C_ARRAYS_H
 #define LEARNING_C_ARRAYS_H
 
-void printArrayAdresses(void);
+void printArrayAddresses(void);
 
 #endif //LEARNING_C_ARRAYS_H

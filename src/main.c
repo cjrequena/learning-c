@@ -2,14 +2,14 @@
 
 #include <stdio.h>
 #include "helloworld/helloworld.h"
-#include "memoryallocation/memory_allocation.h"
+#include "memoryallocation/memoryallocation.h"
 #include "string/string.h"
 #include "arrays/arrays.h"
 int power(int base, int exp);
 
 int main() {
 
-    printArrayAdresses();
+    printArrayAddresses();
 
     char str[] = "Hello World!";
     reverseString(str);

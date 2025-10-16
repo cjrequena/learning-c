@@ -11,8 +11,8 @@ add_executable(
         src/main.c
         src/helloworld/helloworld.c
         src/helloworld/helloworld.h
-        src/memoryallocation/memory_allocation.c
-        src/memoryallocation/memory_allocation.h
+        src/memoryallocation/memoryallocation.c
+        src/memoryallocation/memoryallocation.h
         src/string/string.c
         src/string/string.h
         src/arrays/arrays.c
