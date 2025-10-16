@@ -1,11 +1,30 @@
 // gcc main.c -o ../build/objects/main.o
 
 #include <stdio.h>
-#include "string_reverse.c"
+#include "helloworld/helloworld.h"
+#include "memoryallocation/memory_allocation.h"
+#include "string/string.h"
+#include "arrays/arrays.h"
+int power(int base, int exp);
 
 int main() {
-    char str[] = "Hello World!11";
-    reverseStringV2(str);
+
+    printArrayAdresses();
+
+    char str[] = "Hello World!";
+    reverseString(str);
     printf("%s\n", str);
-    return 0;
+
+    say_hello();
+    printMemoryAllocation();
+    int p = power(3, 10);
+    printf("%d\n", p);
+}
+
+int power(int base, int exp) {
+    int p = 1;
+    for (int i = 0; i < exp; i++) {
+        p = p * base;
+    }
+    return p;
 }

@@ -9,5 +9,13 @@ include_directories(test)
 add_executable(
         learning_c
         src/main.c
-        src/memory_allocation.c
+        src/helloworld/helloworld.c
+        src/helloworld/helloworld.h
+        src/memoryallocation/memory_allocation.c
+        src/memoryallocation/memory_allocation.h
+        src/string/string.c
+        src/string/string.h
+        src/arrays/arrays.c
+        src/arrays/arrays.h
+
 )

@@ -15,10 +15,9 @@
  * @author
  * @date    2025-10-12
  */
-
+#include "memory_allocation.h"
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
 
 /**
  * @var global_init
@@ -57,7 +56,7 @@ void show_memory_regions(void) {
 /**
  * @brief Program entry point.
  *
- * The `main()` function declares a local (stack) variable and performs several
+ * The `printMemoryAllocation()` function declares a local (stack) variable and performs several
  * heap allocations using `malloc()`, `calloc()`, and `realloc()`.
  * It then prints out the memory addresses of:
  * - Text segment (function)
@@ -70,7 +69,7 @@ void show_memory_regions(void) {
  *
  * @return 0 on successful execution.
  */
-int main(void) {
+int printMemoryAllocation(void) {
     /** Local (stack) variable. Stored in the **stack segment**. */
     int stack_var = 30;
 

@@ -1,6 +1,7 @@
-// gcc string_reverse.c -o ../build/objects/string_reverse.o
-#include <stdio.h>
+#include "string.h"
 #include <string.h>
+
+// gcc string.c -o string.o
 
 void reverseString(char str[]) {
     const int len = strlen(str);
@@ -35,7 +36,7 @@ void reverseStringV2(char* str) {
 
 // int main(void) {
 //     char str[] = "Hello World!";
-//     reverse(str);
+//     reverseString(str);
 //     printf("%s\n", str);
 //     return 0;
 // }
