@@ -4,7 +4,21 @@
 
 #include "arrays.h"
 #include <stdio.h>
+#include <stdlib.h>
 
+/**
+ * @brief Prints the values and memory addresses of elements in a local integer array.
+ *
+ * This function demonstrates how arrays are stored in contiguous memory locations in C.
+ * It defines a local integer array of 10 elements, calculates its size dynamically,
+ * and prints each element’s value along with its corresponding memory address.
+ *
+ * @note The array is allocated on the stack, not on the heap. Its lifetime ends when the function returns.
+ * @note This function is primarily for educational or debugging purposes to visualize
+ *       how array elements are laid out in memory.
+ *
+ * @return void This function does not return a value.
+ */
 void printArrayAddresses(void) {
     int array[] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
     int size = sizeof(array) / sizeof(int);
@@ -13,6 +27,46 @@ void printArrayAddresses(void) {
     }
 }
 
-// int main(void) {
-//     printArrayAddresses();
-// }
+/**
+ * @brief Allocates and initializes an integer array on the heap.
+ *
+ * This function dynamically allocates memory for an integer array of a fixed size (10 elements),
+ * initializes each element with its index value (i.e., array[i] = i),
+ * and returns a pointer to the first element of the array.
+ *
+ * In C, you cannot return an array directly from a function (e.g., int[] returnArray(void)).
+ * However, you can return a pointer to an array element (e.g., int *returnArray(void)).
+ *
+ * Important notes:
+ * @note 1. You must not return a pointer to a local (stack) array, as its memory is released when the function exits.
+ * @note 2. To safely return an array, allocate it dynamically using malloc() or calloc(), which reserves memory on the heap.
+ * @note 3. The caller of the function is responsible for freeing the allocated memory after use.
+ * @note This function is primarily for educational.
+ *
+ * @return int* Pointer to the allocated integer array.
+ * @retval NULL If memory allocation fails.
+ */
+int *returnAnArrayFromAfunction(void) {
+    int size = 10;
+    int *arrayPtr = calloc(size, sizeof(int));
+    if (arrayPtr == NULL) {
+        fprintf(stderr, "Memory allocation failed.\n");
+        return NULL;
+    }
+
+    for (int i = 0; i < size; i++) {
+        arrayPtr[i] = i;
+    }
+
+    return arrayPtr;
+}
+
+int main(void) {
+    printArrayAddresses();
+
+    int* arrayPtr = returnAnArrayFromAfunction();
+    for (int i = 0; i < 10; i++) {
+        printf("array[%d] = %d\n", i, arrayPtr[i]);
+    }
+    free(arrayPtr);
+}

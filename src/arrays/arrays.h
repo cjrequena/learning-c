@@ -6,5 +6,6 @@
 #define LEARNING_C_ARRAYS_H
 
 void printArrayAddresses(void);
+int* returnAnArrayFromAfunction(void);
 
 #endif //LEARNING_C_ARRAYS_H
