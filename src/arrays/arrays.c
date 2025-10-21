@@ -61,12 +61,49 @@ int *returnAnArrayFromAfunction(void) {
     return arrayPtr;
 }
 
-int main(void) {
-    printArrayAddresses();
-
-    int* arrayPtr = returnAnArrayFromAfunction();
-    for (int i = 0; i < 10; i++) {
-        printf("array[%d] = %d\n", i, arrayPtr[i]);
+void mergeTwoSortedArrays(const int a[], size_t n, int b[], size_t m, int c[]) {
+    int i = 0, j = 0, k = 0;
+    while (i < n && j < m) {
+        if (a[i] < b[j]) {
+            c[k] = a[i];
+            k++;
+            i++;
+        } else {
+            c[k] = b[j];
+            k++;
+            j++;
+        }
     }
-    free(arrayPtr);
+    while (i < n) {
+        c[k] = a[i];
+        k++;
+        i++;
+    }
+    while (j < m) {
+        c[k] = b[j];
+        k++;
+        j++;
+    }
+}
+
+int main(void) {
+    int a[] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 50,51,52};
+    int n = sizeof(a) / sizeof(int);
+    int b[] = {21, 22, 23, 24, 25, 26, 27, 28, 29, 30};
+    int m = sizeof(b) / sizeof(int);
+    int k = n + m;
+    int c[k];
+
+    mergeTwoSortedArrays(a, n, b, m, c);
+
+    for (int i = 0; i < k; i++) {
+        printf("%d\n", c[i]);
+    }
+
+    // printArrayAddresses();
+    // int* arrayPtr = returnAnArrayFromAfunction();
+    // for (int i = 0; i < 10; i++) {
+    //     printf("array[%d] = %d\n", i, arrayPtr[i]);
+    // }
+    // free(arrayPtr);
 }
