@@ -3,8 +3,11 @@
 //
 
 #include "arrays.h"
+#include <limits.h>
 #include <stdio.h>
 #include <stdlib.h>
+
+#define  MAX_CAPACITY 100
 
 /**
  * @brief Prints the values and memory addresses of elements in a local integer array.
@@ -62,6 +65,11 @@ int *returnAnArrayFromAfunction(void) {
 }
 
 void mergeTwoSortedArrays(const int a[], const size_t n, const int b[], size_t m, int c[]) {
+    if (a == NULL  || b == NULL || c == NULL || n <= 0 || m <= 0) {
+        printf("Error: invalid array or size.\n");
+        return;
+    }
+
     int i = 0, j = 0, k = 0;
     while (i < n && j < m) {
         if (a[i] < b[j]) {
@@ -96,18 +104,58 @@ int* mergeTwoSortedArraysV2(const int a[], const size_t n, const int b[], size_t
     return c;
 }
 
-int findTheMinimum(const int a[], size_t size) {
+int findTheMinimum(const int a[], int size) {
+    if (a == NULL || size <= 0) {
+        printf("Error: invalid array or size.\n");
+        return INT_MIN;  // indicate an error
+    }
+
     int min = a[0];
-    printf("The array size is %lu\n", size);
-    printf("The current min is %d\n", min);
+    printf("Array size: %d\n", size);
+    printf("Initial min: %d\n", min);
+
     for (int i = 1; i < size; i++) {
-        printf("Checking for a new min\n");
+        printf("Checking element a[%d] = %d\n", i, a[i]);
         if (a[i] < min) {
             min = a[i];
-            printf("New min found %d\n", min);
+            printf("New min found: %d\n", min);
         }
     }
     return min;
+}
+
+int findTheMaximum(const int a[], int size) {
+    if (a == NULL || size <= 0) {
+        printf("Error: invalid array or size.\n");
+        return INT_MIN;  // indicate an error
+    }
+
+    int max = a[0];
+    printf("Array size: %d\n", size);
+    printf("Initial max: %d\n", max);
+
+    for (int i = 1; i < size; i++) {
+        printf("Checking element a[%d] = %d\n", i, a[i]);
+        if (a[i] > max) {
+            max = a[i];
+            printf("New max found: %d\n", max);
+        }
+    }
+
+    printf("Final max: %d\n", max);
+    return max;
+}
+
+int insertIntoArray(int a[], int size, int atIndex, int value) {
+    if (atIndex < 0 || atIndex >= size) {
+        printf("Error: Index out of range.\n");
+        return 1;
+    }
+    for (int i = size; i > atIndex; i--) {
+        a[i] = a[i - 1];
+    }
+    a[atIndex] = value;
+    return 0;
 }
 
 int main(void) {
@@ -131,10 +179,20 @@ int main(void) {
     free(d);
 
     printf("=========================\n");
-    int e[] = {2, 3, 4, 5, 6, 7, -369, 8, 9, 10, 50,51,52};
-    const size_t size = sizeof(e) / sizeof(int);
+    int e[] = {500,2, 3, 4, 5, 6, 7, -369,800, 8, 9, 10, 369,50,51,52,600};
+    int size = sizeof(e) / sizeof(int);
     int min = findTheMinimum(e,size);
     printf("The min is: %d\n", min);
+    int max = findTheMaximum(e,size);
+    printf("The max is: %d\n", max);
+
+    printf("=========================\n");
+    int f[MAX_CAPACITY] = {500,2, 3, 4, 5, 6, 7, -369,800, 8, 9, 10, 369,50,51,52,600};
+    size = sizeof(f) / sizeof(int);
+    insertIntoArray(f,size,0,100);
+    for (int i = 0; i < size; i++) {
+        printf("f[%d]= %d\n",i, f[i]);
+    }
 
     // printArrayAddresses();
     // int* arrayPtr = returnAnArrayFromAfunction();
