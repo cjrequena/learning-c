@@ -8,5 +8,7 @@
 
 void printArrayAddresses(void);
 int* returnAnArrayFromAfunction(void);
-void mergeTwoSortedArrays(const int a[], size_t n, int b[], size_t m, int c[n+m]);
+void mergeTwoSortedArrays(const int a[], size_t n, const int b[], size_t m, int c[n+m]);
+int* mergeTwoSortedArraysV2(const int a[], size_t n, const int b[], size_t m);
+int findTheMinimum(const int a[], size_t size);
 #endif //LEARNING_C_ARRAYS_H

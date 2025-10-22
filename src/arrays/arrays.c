@@ -61,7 +61,7 @@ int *returnAnArrayFromAfunction(void) {
     return arrayPtr;
 }
 
-void mergeTwoSortedArrays(const int a[], size_t n, int b[], size_t m, int c[]) {
+void mergeTwoSortedArrays(const int a[], const size_t n, const int b[], size_t m, int c[]) {
     int i = 0, j = 0, k = 0;
     while (i < n && j < m) {
         if (a[i] < b[j]) {
@@ -86,19 +86,55 @@ void mergeTwoSortedArrays(const int a[], size_t n, int b[], size_t m, int c[]) {
     }
 }
 
+int* mergeTwoSortedArraysV2(const int a[], const size_t n, const int b[], size_t m) {
+    size_t size = n + m;
+    int* c = calloc(size, sizeof(int));
+    if (c == NULL) {
+        fprintf(stderr, "Memory allocation failed.\n");
+    }
+    mergeTwoSortedArrays(a,n,b,m,c);
+    return c;
+}
+
+int findTheMinimum(const int a[], size_t size) {
+    int min = a[0];
+    printf("The array size is %lu\n", size);
+    printf("The current min is %d\n", min);
+    for (int i = 1; i < size; i++) {
+        printf("Checking for a new min\n");
+        if (a[i] < min) {
+            min = a[i];
+            printf("New min found %d\n", min);
+        }
+    }
+    return min;
+}
+
 int main(void) {
-    int a[] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 50,51,52};
-    int n = sizeof(a) / sizeof(int);
+    const int a[] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 50,51,52};
+    const int n = sizeof(a) / sizeof(int);
     int b[] = {21, 22, 23, 24, 25, 26, 27, 28, 29, 30};
-    int m = sizeof(b) / sizeof(int);
+    const int m = sizeof(b) / sizeof(int);
     int k = n + m;
     int c[k];
-
     mergeTwoSortedArrays(a, n, b, m, c);
-
     for (int i = 0; i < k; i++) {
         printf("%d\n", c[i]);
     }
+
+    printf("=========================\n");
+
+    int* d = mergeTwoSortedArraysV2(a, n, b, m);
+    for (int i = 0; i < k; i++) {
+        printf("%d\n", d[i]);
+    }
+    free(d);
+
+    printf("=========================\n");
+    int e[] = {2, 3, 4, 5, 6, 7, -369, 8, 9, 10, 50,51,52};
+    const size_t size = sizeof(e) / sizeof(int);
+    int min = findTheMinimum(e,size);
+    printf("The min is: %d\n", min);
 
     // printArrayAddresses();
     // int* arrayPtr = returnAnArrayFromAfunction();
@@ -106,4 +142,5 @@ int main(void) {
     //     printf("array[%d] = %d\n", i, arrayPtr[i]);
     // }
     // free(arrayPtr);
+    return 0;
 }
