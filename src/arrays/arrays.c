@@ -6,6 +6,7 @@
 #include <limits.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <stdbool.h>
 
 #define  MAX_CAPACITY 100
 
@@ -158,6 +159,97 @@ int insertIntoArray(int a[], int size, int atIndex, int value) {
     return 0;
 }
 
+void basicSort(int a[], int size, bool ascending) {
+    if (a == NULL || size <= 0) {
+        printf("Error: invalid array or size.\n");
+        return;
+    }
+    int counter = 0;
+    for (int i = 0; i < size; i++) {
+        for (int j = 0; j < size - 1 - i; j++) {
+            if ((ascending && a[j] > a[j + 1]) || (!ascending && a[j] < a[j + 1])) {
+                int temp = a[j];
+                a[j] = a[j + 1];
+                a[j + 1] = temp;
+            }
+            counter++;
+        }
+    }
+    printf("Counter Loops: %d\n", counter);
+}
+
+/**
+ * @brief Sorts an integer array using the bubble sort algorithm.
+ *
+ * The function repeatedly steps through the array, compares adjacent elements,
+ * and swaps them if they are in the wrong order. The process continues until
+ * no swaps are needed, meaning the array is sorted.
+ *
+ * If the `ascending` flag is set to `true`, the function sorts the array in
+ * ascending order; if set to `false`, it sorts in descending order.
+ *
+ * Additionally, after each pass, the function prints which element has been
+ * placed in its correct position for visualization and learning purposes.
+ *
+ * @param a          The array of integers to sort.
+ * @param size       The number of elements in the array.
+ * @param ascending  Boolean flag indicating sorting order:
+ *                   - `true` for ascending order
+ *                   - `false` for descending order
+ *
+ * @note The sorting is done in place; no additional array is created.
+ * @note The function uses the do-while loop to continue until no swaps occur.
+ *
+ *
+ * @return None
+ *
+ * @see https://en.wikipedia.org/wiki/Bubble_sort
+ *
+ * @example
+ * // Example usage:
+ * #include <stdio.h>
+ * #include <stdbool.h>
+ *
+ * int main(void) {
+ *     int arr[] = {5, 3, 8, 4, 2};
+ *     int size = sizeof(arr) / sizeof(arr[0]);
+ *
+ *     // Sort array in ascending order
+ *     bubbleSort(arr, size, true);
+ *
+ *     printf("Sorted array: ");
+ *     for (int i = 0; i < size; i++)
+ *         printf("%d ", arr[i]);
+ *     printf("\n");
+ *
+ *     return 0;
+ * }
+ */
+void bubbleSort(int a[], int size, bool ascending) {
+    if (a == NULL || size <= 0) {
+        printf("Error: invalid array or size.\n");
+        return;
+    }
+    bool swapped=false;
+    int i=0;
+    int counter = 0;
+    do {
+        swapped = false;
+        for (int j = 0; j < size - 1 - i; j++) {
+            if ((ascending && a[j] > a[j + 1]) || (!ascending && a[j] < a[j + 1])) {
+                int temp = a[j];
+                a[j] = a[j + 1];
+                a[j + 1] = temp;
+                swapped = true;
+            }
+            counter++;
+        }
+        printf("After pass %d, last element is a[%d] = %d\n",i + 1, size - 1 - i, a[size - 1 - i]);
+        i++;
+    } while (swapped);
+    printf("Counter Loops: %d\n", counter);
+}
+
 int main(void) {
     const int a[] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 50,51,52};
     const int n = sizeof(a) / sizeof(int);
@@ -187,11 +279,21 @@ int main(void) {
     printf("The max is: %d\n", max);
 
     printf("=========================\n");
-    int f[MAX_CAPACITY] = {500,2, 3, 4, 5, 6, 7, -369,800, 8, 9, 10, 369,50,51,52,600};
+    int f[] = {500,2, 3, 4, 5, 6, 7, -369,800, 8, 9, 10, 369,50,51,52,600};
     size = sizeof(f) / sizeof(int);
     insertIntoArray(f,size,0,100);
     for (int i = 0; i < size; i++) {
         printf("f[%d]= %d\n",i, f[i]);
+    }
+
+
+    int g[] = {500,2, 3, 4, 5, 6, 7, -369,800, 8};
+    size = sizeof(g) / sizeof(int);
+    bubbleSort(g,size, true);
+
+    printf("=========================\n");
+    for (int i = 0; i < size; i++) {
+        printf("f[%d]= %d\n",i, g[i]);
     }
 
     // printArrayAddresses();
