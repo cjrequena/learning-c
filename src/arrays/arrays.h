@@ -17,5 +17,6 @@ int findTheMaximum(const int a[], int size);
 int insertIntoArray(int a[], int size, int atIndex, int value);
 void basicSort(int a[], int size, bool ascending);
 void bubbleSort(int a[], int size, bool ascending);
+void shuffle(int a[], int size);
 
 #endif //LEARNING_C_ARRAYS_H

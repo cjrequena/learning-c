@@ -7,8 +7,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
+#include <time.h>
 
 #define  MAX_CAPACITY 100
+#define  DECK_SIZE 52
 
 /**
  * @brief Prints the values and memory addresses of elements in a local integer array.
@@ -250,57 +252,80 @@ void bubbleSort(int a[], int size, bool ascending) {
     printf("Counter Loops: %d\n", counter);
 }
 
-int main(void) {
-    const int a[] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 50,51,52};
-    const int n = sizeof(a) / sizeof(int);
-    int b[] = {21, 22, 23, 24, 25, 26, 27, 28, 29, 30};
-    const int m = sizeof(b) / sizeof(int);
-    int k = n + m;
-    int c[k];
-    mergeTwoSortedArrays(a, n, b, m, c);
-    for (int i = 0; i < k; i++) {
-        printf("%d\n", c[i]);
-    }
-
-    printf("=========================\n");
-
-    int* d = mergeTwoSortedArraysV2(a, n, b, m);
-    for (int i = 0; i < k; i++) {
-        printf("%d\n", d[i]);
-    }
-    free(d);
-
-    printf("=========================\n");
-    int e[] = {500,2, 3, 4, 5, 6, 7, -369,800, 8, 9, 10, 369,50,51,52,600};
-    int size = sizeof(e) / sizeof(int);
-    int min = findTheMinimum(e,size);
-    printf("The min is: %d\n", min);
-    int max = findTheMaximum(e,size);
-    printf("The max is: %d\n", max);
-
-    printf("=========================\n");
-    int f[] = {500,2, 3, 4, 5, 6, 7, -369,800, 8, 9, 10, 369,50,51,52,600};
-    size = sizeof(f) / sizeof(int);
-    insertIntoArray(f,size,0,100);
+void shuffle(int a[], int size) {
+    srand(  time(NULL)  );
     for (int i = 0; i < size; i++) {
-        printf("f[%d]= %d\n",i, f[i]);
+        int swapIndex = rand() % size;
+        int temp = a[i];
+        a[i] = a[swapIndex];
+        a[swapIndex] = temp;
     }
-
-
-    int g[] = {500,2, 3, 4, 5, 6, 7, -369,800, 8};
-    size = sizeof(g) / sizeof(int);
-    bubbleSort(g,size, true);
-
-    printf("=========================\n");
-    for (int i = 0; i < size; i++) {
-        printf("f[%d]= %d\n",i, g[i]);
-    }
-
-    // printArrayAddresses();
-    // int* arrayPtr = returnAnArrayFromAfunction();
-    // for (int i = 0; i < 10; i++) {
-    //     printf("array[%d] = %d\n", i, arrayPtr[i]);
-    // }
-    // free(arrayPtr);
-    return 0;
 }
+
+// int main(void) {
+//
+//     printArrayAddresses();
+//     int* arrayPtr = returnAnArrayFromAfunction();
+//     for (int i = 0; i < 10; i++) {
+//         printf("array[%d] = %d\n", i, arrayPtr[i]);
+//     }
+//     free(arrayPtr);
+//
+//     const int a[] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 50,51,52};
+//     const int n = sizeof(a) / sizeof(int);
+//     int b[] = {21, 22, 23, 24, 25, 26, 27, 28, 29, 30};
+//     const int m = sizeof(b) / sizeof(int);
+//     int k = n + m;
+//     int c[k];
+//     mergeTwoSortedArrays(a, n, b, m, c);
+//     for (int i = 0; i < k; i++) {
+//         printf("%d\n", c[i]);
+//     }
+//
+//     printf("=========================\n");
+//
+//     int* d = mergeTwoSortedArraysV2(a, n, b, m);
+//     for (int i = 0; i < k; i++) {
+//         printf("%d\n", d[i]);
+//     }
+//     free(d);
+//
+//     printf("=========================\n");
+//     int e[] = {500,2, 3, 4, 5, 6, 7, -369,800, 8, 9, 10, 369,50,51,52,600};
+//     int size = sizeof(e) / sizeof(int);
+//     int min = findTheMinimum(e,size);
+//     printf("The min is: %d\n", min);
+//     int max = findTheMaximum(e,size);
+//     printf("The max is: %d\n", max);
+//
+//     printf("=========================\n");
+//     int f[] = {500,2, 3, 4, 5, 6, 7, -369,800, 8, 9, 10, 369,50,51,52,600};
+//     size = sizeof(f) / sizeof(int);
+//     insertIntoArray(f,size,0,100);
+//     for (int i = 0; i < size; i++) {
+//         printf("f[%d]= %d\n",i, f[i]);
+//     }
+//
+//
+//     int g[] = {500,2, 3, 4, 5, 6, 7, -369,800, 8};
+//     size = sizeof(g) / sizeof(int);
+//     bubbleSort(g,size, true);
+//
+//     printf("=========================\n");
+//     for (int i = 0; i < size; i++) {
+//         printf("f[%d]= %d\n",i, g[i]);
+//     }
+//
+//     printf("=========================\n");
+//     int h[DECK_SIZE];
+//     for (int i = 0; i < DECK_SIZE; i++) {
+//         h[i] = i+1;
+//     }
+//     size = sizeof(h) / sizeof(int);
+//     shuffle(h,size);
+//     for (int i = 0; i < DECK_SIZE; i++) {
+//         printf("%d\n", h[i]);
+//     }
+//
+//     return 0;
+// }
